@@ -4,9 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import './styles/ask.css';
 import boyLookingToBeAcceptedFile from './assets/animations/boy-looking-to-accept.json';
-import cryingBoyAnimationFile_1 from './assets/animations/crying_boy_1.json';
-import cryingBoyAnimationFile_2 from './assets/animations/crying_boy_2.json'
-import doesntMatterAnimationFile from './assets/animations/doesnt_matter_boy.json'
 import acceptAnimationFile from './assets/animations/love_animation.json'
 
 const boyLookingToBeAccepted = {
@@ -18,32 +15,7 @@ const boyLookingToBeAccepted = {
   },
 };
 
-const cryingBoyAnimation_1 = {
-  loop: true,
-  autoplay: true,
-  animationData: cryingBoyAnimationFile_1,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice"
-  },
-};
 
-const cryingBoyAnimation_2 = {
-  loop: true,
-  autoplay: true,
-  animationData: cryingBoyAnimationFile_2,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice"
-  },
-};
-
-const doesntMatterAnimation = {
-  loop: true,
-  autoplay: true,
-  animationData: doesntMatterAnimationFile,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice"
-  },
-};
 
 const acceptAnimation = {
   loop: true,
@@ -60,57 +32,26 @@ export default function Ask(props) {
 
   const navigate = useNavigate();
 
-  const [noCount, setNoCount] = useState(0);
+  // const [noCount, setNoCount] = useState(0);
   const [askText, setAskText] = useState("Happy Propose Day Amrita! Will you be mine forever?");
   const [emojiAsk, setEmojiAsk] = useState('💗');
   const [yesOrNow, setYesOrNow] = useState(null);
 
 
-  useEffect(() => {
-    if (noCount > 2) {
-      setTimeout(() => {
-        navigate('/destroy');
-      }, 1000);
-    }
-  }, [noCount, navigate]);
+
 
   useEffect(() => {
     setProgress(100);
   }, [setProgress])
 
 
-  const handleNoClick = (event) => {
-    event.preventDefault();
-    setNoCount(noCount + 1);
-    document.querySelector('.wait-animation').classList.add('hidden');
-    if (noCount === 0) {
-      document.querySelector('.cry-animation-1').classList.remove('hidden');
-      setAskText("Please don't say no?")
-      setEmojiAsk('😢')
-    } else if (noCount === 1) {
-      document.querySelector('.cry-animation-1').classList.add('hidden');
-      document.querySelector('.cry-animation-2').classList.remove('hidden');
-      setAskText("Please be my Valentine?")
-      setEmojiAsk('😭')
-    }
-    else {
-      document.querySelector('.cry-animation-2').classList.add('hidden');
-      document.querySelector('.doesnt-matter-animation').classList.remove('hidden');
-      document.querySelector('.Yes').classList.add('hidden');
-      document.querySelector('.convey').classList.add('hidden');
-      document.querySelector('.ask').classList.remove('sm:text-4xl', 'text-2xl');
-      document.querySelector('.ask').classList.add('text-3xl', 'sm:text-6xl');
-      setAskText("Bye You don't deserve me .")
-      setEmojiAsk('');
-      document.querySelector('.No').classList.add('translate-y-56', 'sm:translate-y-[22.8rem]', 'pointer-events-none');
-    }
-  }
+
 
   const handleYesClick = (event) => {
     event.preventDefault();
     document.querySelector('.wait-animation').classList.add('hidden');
-    document.querySelector('.cry-animation-1').classList.add('hidden');
-    document.querySelector('.cry-animation-2').classList.add('hidden');
+    // document.querySelector('.cry-animation-1').classList.add('hidden');
+    // document.querySelector('.cry-animation-2').classList.add('hidden');
     document.querySelector('.accept-animation').classList.remove('hidden');
     document.querySelector('.buttons').classList.add('hidden');
     setAskText("I knew it! I Love You Amrita! ❤️")
@@ -131,27 +72,7 @@ export default function Ask(props) {
             width={300}
           />
         </div>
-        <div className='cry-animation-1 pointer-events-none hidden'>
-          <Lottie
-            options={cryingBoyAnimation_1}
-            height={300}
-            width={300}
-          />
-        </div>
-        <div className='cry-animation-2 pointer-events-none hidden'>
-          <Lottie
-            options={cryingBoyAnimation_2}
-            height={300}
-            width={300}
-          />
-        </div>
-        <div className='doesnt-matter-animation pointer-events-none hidden'>
-          <Lottie
-            options={doesntMatterAnimation}
-            height={300}
-            width={300}
-          />
-        </div>
+
         <div className='accept-animation pointer-events-none hidden'>
           <Lottie
             options={acceptAnimation}
