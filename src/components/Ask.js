@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Lottie from 'react-lottie';
 import { Link, useNavigate } from 'react-router-dom';
-import MessageSend from './MessageSend';
+
 import './styles/ask.css';
 import boyLookingToBeAcceptedFile from './assets/animations/boy-looking-to-accept.json';
 import cryingBoyAnimationFile_1 from './assets/animations/crying_boy_1.json';
@@ -61,7 +61,7 @@ export default function Ask(props) {
   const navigate = useNavigate();
 
   const [noCount, setNoCount] = useState(0);
-  const [askText, setAskText] = useState("Will you do me the honor of being my Valentine MY darling  Amrita ?");
+  const [askText, setAskText] = useState("Happy Propose Day Amrita! Will you be mine forever?");
   const [emojiAsk, setEmojiAsk] = useState('💗');
   const [yesOrNow, setYesOrNow] = useState(null);
 
@@ -113,9 +113,12 @@ export default function Ask(props) {
     document.querySelector('.cry-animation-2').classList.add('hidden');
     document.querySelector('.accept-animation').classList.remove('hidden');
     document.querySelector('.buttons').classList.add('hidden');
-    setAskText("Yayy.. lets meet ! ")
+    setAskText("I knew it! I Love You Amrita! ❤️")
     setEmojiAsk('😍');
     setYesOrNow("Yes");
+    setTimeout(() => {
+      navigate('/endpage');
+    }, 4000); // Navigate to EndPage after animation
   }
 
   return (
@@ -173,16 +176,8 @@ export default function Ask(props) {
                 Yes
               </div>
             </button>
-            <button
-              className='No w-fit h-fit rotate-[14deg] duration-300'
-              onClick={handleNoClick}
-            >
-              <div className="button-no button-text px-7 py-3 border-2 rounded-xl text-xl bg-transparent bg-gradient-to-tr from-[#3a6186] to-[#89253e] text-gray-200 shadow-xl shadow-pink-500 hover:scale-110 active:scale-90 duration-200">
-                No
-              </div>
-            </button>
           </div>
-          {yesOrNow === "Yes" ? <MessageSend /> : null}
+          {yesOrNow === "Yes" ? null : null}
         </div>
       </div>
       <Link to="/destroy" className="destroy-link hidden pointer-events-none select-none"></Link>
