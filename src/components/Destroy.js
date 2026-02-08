@@ -22,10 +22,11 @@ const bombAnimation = {
 };
 
 export default function Destroy(props) {
+    const { setProgress } = props;
 
-useEffect(() => {
-  props.setProgress(100);
-}, [])
+    useEffect(() => {
+        setProgress(100);
+    }, [setProgress])
 
 
 

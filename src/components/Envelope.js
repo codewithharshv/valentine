@@ -1,6 +1,6 @@
 import React from 'react'
 import Lottie from 'react-lottie'
-import { useState , useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './styles/envelope.css'
 import boyThinkAnimationFile from './assets/animations/boy-thinking.json'
@@ -37,6 +37,7 @@ const YayAnimation = {
 };
 
 export default function Card(props) {
+  const { setProgress } = props;
 
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [buttonText, setButtonText] = useState("Open me !");
@@ -56,9 +57,9 @@ export default function Card(props) {
   }
 
   useEffect(() => {
-    props.setProgress(100);
-  }, [])
-  
+    setProgress(100);
+  }, [setProgress])
+
 
   return (
     <div className="card-and-animation flex min-h-screen flex-col bg-transparent bg-gradient-to-tr from-[#3a1c71] via-[#d76d77] to-[#ffaf7b] ">

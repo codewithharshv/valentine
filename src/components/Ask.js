@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Lottie from 'react-lottie';
-import { Link , useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MessageSend from './MessageSend';
 import './styles/ask.css';
 import boyLookingToBeAcceptedFile from './assets/animations/boy-looking-to-accept.json';
@@ -56,27 +56,28 @@ const acceptAnimation = {
 
 
 export default function Ask(props) {
+  const { setProgress } = props;
 
   const navigate = useNavigate();
 
   const [noCount, setNoCount] = useState(0);
-  const [askText, setAskText] = useState("Will you do me the honor of being my Valentine?");
+  const [askText, setAskText] = useState("Will you do me the honor of being my Valentine MY darling  Amrita ?");
   const [emojiAsk, setEmojiAsk] = useState('💗');
   const [yesOrNow, setYesOrNow] = useState(null);
 
 
   useEffect(() => {
-    if (noCount > 2) { 
+    if (noCount > 2) {
       setTimeout(() => {
-        navigate('/destroy'); 
-      }, 1000); 
+        navigate('/destroy');
+      }, 1000);
     }
   }, [noCount, navigate]);
 
   useEffect(() => {
-    props.setProgress(100);
-  }, [])
-  
+    setProgress(100);
+  }, [setProgress])
+
 
   const handleNoClick = (event) => {
     event.preventDefault();

@@ -6,17 +6,18 @@ import songVideo from './assets/videos/song.mp4';
 
 
 export default function Note(props) {
+  const { setProgress } = props;
 
   useEffect(() => {
-    props.setProgress(100);
-  }, []);
+    setProgress(100);
+  }, [setProgress]);
 
 
   return (
     <div className='note-for-crush bg-transparent bg-gradient-to-br from-[#3a1c71] via-[#d76d77] to-[#ffaf7b] w-full min-h-screen flex flex-col flex-wrap gap-0 sm:gap-6 justify-center items-center'>
       <div className="up-content flex items-center justify-center">
         <div className="note-card flex items-center justify-between ">
-         <NoteBook />
+          <NoteBook />
         </div>
       </div>
       <div className="down-content w-fit h-fit flex flex-col flex-wrap items-center justify-center gap-2 sm:gap-10">
