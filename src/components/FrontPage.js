@@ -5,10 +5,11 @@ import bg from './assets/images/page-1_bg.png';
 import heartAnimation from './assets/animations/floating_hearts.json';
 import './styles/frontpage.css';
 
+const sentence = "We have known each other from a long time but today I have something important to tell you...\n";
+const typingSpeed = 200; // Adjust typing speed here
+
 export default function FrontPage() {
     const [text, setText] = useState('');
-    const sentence = "We have known each other from a long time but today I have something important to tell you...\n";
-    const typingSpeed = 200; // Adjust typing speed here
 
     useEffect(() => {
         const typeSentence = (index) => {

@@ -21,13 +21,13 @@ export default function MessageSend() {
 
     const navigate2 = useNavigate();
 
-    const handleOnChangeDate = (date, dateString) => {
+    const handleOnChangeDate = (dateValue, dateString) => {
         setDate(dateString);
     }
 
     dayjs.extend(customParseFormat);
 
-    const handleOnChangeTime = (time, timeString) => {
+    const handleOnChangeTime = (timeValue, timeString) => {
         setTime(timeString);
     };
 
